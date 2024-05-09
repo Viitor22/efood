@@ -9,6 +9,13 @@ export const CardDiv = styled.div`
         padding: 8px;
     }
 
+    img{
+        max-width: 480px;
+        width: 100%;
+        max-height: 220px;
+        object-fit: fill;
+    }
+
     
     p{
         margin-bottom: 20px;

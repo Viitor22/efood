@@ -1,16 +1,37 @@
 import * as S from "./index.ts"
+import close from '../../assets/close 1.png'
+import { useState } from "react";
 
-import marguerita from '../../assets/marguerita.png'
+const CardPerfil = (MenuItemsModal: { image: any; name: any; description: any; modalDescription: any; portion: any; price: any }) => {
+    const {image, name, description, modalDescription, portion, price} = MenuItemsModal
+    const [ModalActive, setModalActive] = useState(false);
 
-const CardPerfil = () => {
     return (
         <>
         <S.CardPerfilContainer>
-            <img src={marguerita}/>
-            <S.CardSubTitle>Pizza Marguerita</S.CardSubTitle>
-            <S.CardText>A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!</S.CardText>
-            <S.CardButton>Adicionar ao carrinho</S.CardButton>
+            <img src={image}/>
+            <S.CardSubTitle>{name}</S.CardSubTitle>
+            <S.CardText>{description}</S.CardText>
+            <S.CardButton onClick={() => setModalActive(true)}>Adicionar ao carrinho</S.CardButton>
         </S.CardPerfilContainer>
+        <S.Modal className={ ModalActive ? 'visible' : ''}>
+            <S.ModalContent >
+                <header>
+                    <img onClick={() => setModalActive(false)} src={close} alt="Ícone de fechar" />
+                </header>
+                <S.ModalContentContainer>
+                    <img src={image} alt="" />
+                    <div className="text-content">
+                    <S.CardSubTitle>{name}</S.CardSubTitle>
+                    <S.CardText>{modalDescription}</S.CardText>
+                    <S.CardText>Serve: {portion}</S.CardText>
+                    <S.CardButton>Adicionar ao carrinho - R$ {price}</S.CardButton>
+                    </div>
+                </S.ModalContentContainer>
+            </S.ModalContent>
+            <div className='overlay'>
+            </div>
+        </S.Modal>
         </>
     )
 }
