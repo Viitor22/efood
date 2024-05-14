@@ -2,17 +2,14 @@ import Menu from "../../Containers/Menu/index.tsx"
 import Footer from "../../Containers/Footer/index.tsx"
 import HeaderPerfil from "../../Containers/HeaderPerfil/index.tsx"
 import Presentation from "../../Containers/Presentation/index.tsx"
-import { Restaurant } from "../../Containers/RestaurantList/index.tsx"
-import { useEffect, useState } from "react"
+import { useGetRestaurantQuery } from "../../services/api.ts"
 
 const Perfil = () => {
-    const [restaurants, setRestaurants] = useState<Restaurant[]>([])
+    const {data: restaurants} = useGetRestaurantQuery()
 
-    useEffect(() => {
-        fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-        .then(res => res.json())
-        .then(res => setRestaurants(res))
-    }, [])
+    if(!restaurants){
+        return
+    }
 
     return (
         <>

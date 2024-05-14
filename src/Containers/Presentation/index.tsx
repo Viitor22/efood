@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { Restaurant } from '../RestaurantList/index.tsx'
+import { Restaurant } from '../../Models/restaurant.ts'
 import { PresentationContainer, RestaurantName, TitlePresentation } from './index.ts'
 
 type Props = {

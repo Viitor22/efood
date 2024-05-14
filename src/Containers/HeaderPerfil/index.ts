@@ -17,4 +17,6 @@ export const HeaderContainer = styled.div`
 export const HeaderTitle = styled(Title)`
     font-size: 18px;
     font-weight: 900;
+    cursor: pointer;
+    z-index: 1;
 `
