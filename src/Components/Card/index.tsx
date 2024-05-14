@@ -2,7 +2,7 @@ import { SubTitle, Text, Button} from '../../Styles'
 import {CardDiv, CardTags, CardTitle} from './index.ts'
 import star from '../../assets/star.png'
 import { useNavigate } from 'react-router-dom'
-import { Restaurant } from '../../Containers/RestaurantList/index.tsx'
+import { Restaurant } from '../../Models/restaurant.ts'
 
 type Props = {
     restaurants: Restaurant
