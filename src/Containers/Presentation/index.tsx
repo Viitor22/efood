@@ -10,21 +10,9 @@ const Presentation = ({restaurants}:Props) => {
     const {id} = useParams();
     for (let i = 0; i < restaurants.length; i++) {
         if (id === undefined){
-            if (restaurants[i].id === i) {
-                const {capa, tipo, titulo} = restaurants[i]
-                return (
-                    <>
-                    <PresentationContainer style={{backgroundImage: `url(${capa})`}}>
-                    <div className='content'>
-                        <RestaurantName>{tipo}</RestaurantName>
-                        <TitlePresentation>{titulo}</TitlePresentation>
-                    </div>
-                    </PresentationContainer>
-                    </>
-                )
-            }
+
         } else{
-            if (restaurants[i].id === i) {
+            if (restaurants[i].id == id) {
                 const {capa, tipo, titulo} = restaurants[i]
                 return (
                     <>

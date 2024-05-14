@@ -13,7 +13,7 @@ export type MenuModel = {
 }
 
 export type Restaurant = {
-    id: number 
+    id: string 
     titulo: string
     destacado: boolean
     tipo: string
