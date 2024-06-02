@@ -95,10 +95,10 @@ const Checkout = () => {
                 ) : (
                 <>
                 <div>
-                    <CheckTitle>order realizado - {data.ORDER_ID}</CheckTitle>
-                    <CheckText>Estamos felizes em informar que seu order já está em processo de preparação e, em breve, será entregue no endereço fornecido.</CheckText>
+                    <CheckTitle>Pedido realizado - {data.ORDER_ID}</CheckTitle>
+                    <CheckText>Estamos felizes em informar que seu Pedido já está em processo de preparação e, em breve, será entregue no endereço fornecido.</CheckText>
                     <CheckText>Gostaríamos de ressaltar que nossos entregadores não estão autorizados a realizar cobranças extras. </CheckText>
-                    <CheckText>Lembre-se da importância de higienizar as mãos após o recebimento do order, garantindo assim sua segurança e bem-estar durante a refeição. </CheckText>
+                    <CheckText>Lembre-se da importância de higienizar as mãos após o recebimento do Pedido, garantindo assim sua segurança e bem-estar durante a refeição. </CheckText>
                     <CheckText>Esperamos que desfrute de uma deliciosa e agradável experiência gastronômica. Bom apetite!</CheckText>
                 </div>
                 </>)}
