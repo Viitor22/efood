@@ -12,19 +12,19 @@ const Menu = ({restaurants}:Props) => {
 
     for (let i = 0; i < restaurants.length; i++) {
         if (id === undefined){
-
+            break
         } else{
             if (restaurants[i].id == id) {
                 return (
                     <>
                     <ListContainer>
-                        {restaurants[i].cardapio.map((menuItem) => (
-                            <CardPerfil key={menuItem.id} image={menuItem.foto}
-                            name={menuItem.nome}
-                            description={menuItem.descricao}
-                            modalDescription={menuItem.descricao}
-                            portion={menuItem.porcao}
-                            price={menuItem.preco}>
+                        {restaurants[i].menu.map((menuItem) => (
+                            <CardPerfil key={menuItem.id} image={menuItem.photo}
+                            name={menuItem.name}
+                            description={menuItem.description}
+                            modalDescription={menuItem.description}
+                            portion={menuItem.portion}
+                            price={menuItem.price}>
                             </CardPerfil>
                         ))}
                     </ListContainer>

@@ -1,10 +1,11 @@
+import { RootReducer } from "../../store/index.ts";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import * as S from "./index.ts"
 import close from '../../assets/close 1.png'
-import { useState } from "react";
 import { add, open } from "../../store/reducer/cart.ts";
-import { useDispatch, useSelector } from "react-redux";
-import { Pedido } from "../../Models/pedido.ts";
-import { RootReducer } from "../../store/index.ts";
+import { Order } from "../../Models/order.ts";
 
 const CardPerfil = (MenuItemsModal: { image: any; name: any; description: any; modalDescription: any; portion: any; price: any }) => {
     const {image, name, description, modalDescription, portion, price} = MenuItemsModal
@@ -18,10 +19,10 @@ const CardPerfil = (MenuItemsModal: { image: any; name: any; description: any; m
         }).format(price)
     }
 
-    const pedido: Pedido = {
-        foto: image,
-        preco: price,
-        nome: name,
+    const order: Order = {
+        photo: image,
+        price: price,
+        name: name,
         id: items.length
     }
 
@@ -29,15 +30,17 @@ const CardPerfil = (MenuItemsModal: { image: any; name: any; description: any; m
 
     const openCart = () => {
         dispatch(open())
-        dispatch(add(pedido))
+        dispatch(add(order))
     }
 
     return (
         <>
         <S.CardPerfilContainer>
-            <img src={image}/>
-            <S.CardSubTitle>{name}</S.CardSubTitle>
-            <S.CardText>{description}</S.CardText>
+            <div>
+                <img src={image}/>
+                <S.CardSubTitle>{name}</S.CardSubTitle>
+                <S.CardText>{description}</S.CardText>
+            </div>
             <S.CardButton onClick={() => setModalActive(true)}>Adicionar ao carrinho</S.CardButton>
         </S.CardPerfilContainer>
         <S.Modal className={ ModalActive ? 'visible' : ''}>

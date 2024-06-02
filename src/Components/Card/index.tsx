@@ -1,36 +1,39 @@
+import { useNavigate } from 'react-router-dom'
+
 import { SubTitle, Text, Button} from '../../Styles'
 import {CardDiv, CardTags, CardTitle} from './index.ts'
-import star from '../../assets/star.png'
-import { useNavigate } from 'react-router-dom'
+
 import { Restaurant } from '../../Models/restaurant.ts'
+
+import star from '../../assets/star.png'
 
 type Props = {
     restaurants: Restaurant
 }
 
 const Card = ({restaurants}:Props) => {
-    const {avaliacao, capa, descricao, destacado, id, tipo, titulo} = restaurants
+    const {grade, banner, description, highlighted, id, type, title} = restaurants
     const navigate = useNavigate();
 
-    const rotaPerfil = () => {
+    const routePerfil = () => {
         navigate(`/perfil/${id}`)
     }
 
     return (
             <CardDiv>
                 <CardTags>
-                    {destacado ? (<Button>Destaque da semana</Button>) : ( <></>)}
+                    {highlighted ? (<Button>Destaque da semana</Button>) : ( <></>)}
                     
-                    <Button>{tipo}</Button>
+                    <Button>{type}</Button>
                 </CardTags>
-                <img src={capa}/>
+                <img src={banner}/>
                 <div className='card-content'>
                     <CardTitle>
-                    <SubTitle>{titulo}</SubTitle>
-                    <SubTitle className='card-grade'>{avaliacao}<img src={star} alt="Estrela" /></SubTitle>
+                    <SubTitle>{title}</SubTitle>
+                    <SubTitle className='card-grade'>{grade}<img src={star} alt="Estrela" /></SubTitle>
                     </CardTitle>
-                    <Text className='card-text'>{descricao}</Text>
-                    <Button onClick={rotaPerfil}>Saiba Mais</Button>
+                    <Text className='card-text'>{description}</Text>
+                    <Button onClick={routePerfil}>Saiba Mais</Button>
                 </div>
             </CardDiv>
     )

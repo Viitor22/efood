@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Title } from "../../Styles/index.ts";
+import { Title, breakpoints } from "../../Styles/index.ts";
 
 export const HeaderContainer = styled.div`
     display: flex;
@@ -12,6 +12,16 @@ export const HeaderContainer = styled.div`
     div{
         position: absolute;
         margin-bottom: 0px;
+    }
+
+    @media (max-width: ${breakpoints.tablet}){
+        h1 {
+        font-size: 14px;
+        }
+
+        h1:nth-child(1){
+            margin-right: 210px;
+        }
     }
 `
 export const HeaderTitle = styled(Title)`

@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { cores } from "../../Styles";
+
+import { breakpoints, colors } from "../../Styles";
 
 export const CardDiv = styled.div`
-    border: 1px solid ${cores.principal};
+    border: 1px solid ${colors.main};
     position: relative;
 
     .card-content{
@@ -14,6 +15,10 @@ export const CardDiv = styled.div`
         width: 100%;
         max-height: 220px;
         object-fit: fill;
+
+        @media (max-width: ${breakpoints.desktop}){
+            max-width: 580px;
+        }
     }
 
     
@@ -47,5 +52,11 @@ export const CardTags = styled.div`
 
     button{
         margin-right: 8px;
+    }
+
+    @media (max-width: ${breakpoints.tablet}){
+        button{
+            font-size: 12px;
+        }
     }
 `

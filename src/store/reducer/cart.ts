@@ -1,8 +1,8 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import { Pedido } from '../../Models/pedido'
+import { order } from '../../Models/order'
 
 type CartState = {
-    items: Pedido[]
+    items: order[]
     isOpen: boolean
 }
 
@@ -15,7 +15,7 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        add: (state, action: PayloadAction<Pedido>) => {
+        add: (state, action: PayloadAction<order>) => {
             state.items.push(action.payload)
         },
         remove: (state, action: PayloadAction<number>) => {

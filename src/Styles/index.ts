@@ -1,9 +1,14 @@
 import styled, {createGlobalStyle} from "styled-components";
 
-export const cores = {
-    principal: '#E66767',
-    branco: ' #FFEBD9',
-    preto: '#000'
+export const colors = {
+    main: '#E66767',
+    white: ' #FFEBD9',
+    black: '#000',
+}
+
+export const breakpoints = {
+    desktop: '1024px',
+    tablet: '768px'
 }
 
 const GlobalCss = createGlobalStyle`
@@ -14,19 +19,23 @@ const GlobalCss = createGlobalStyle`
         font-family: Roboto;
         list-style: none;
     }
+
+    small{
+        color: ${colors.white};
+    }
 `
 
 export const Title = styled.h1`
     font-size: 36px;
     font-weight: 900;
     text-align: center;
-    color: ${cores.principal};
+    color: ${colors.main};
 `
 export const SubTitle = styled.h2`
     font-size: 18px;
     font-weight: 700;
     text-align: left;
-    color: ${cores.principal};
+    color: ${colors.main};
 `
 
 export const Text = styled.p`
@@ -34,7 +43,7 @@ export const Text = styled.p`
     font-weight: 400;
     line-height: 22px;
     text-align: left;
-    color: ${cores.principal};
+    color: ${colors.main};
 `
 export const Button = styled.button`
     padding: 3px 6px;
@@ -42,15 +51,30 @@ export const Button = styled.button`
     font-weight: 700;
     text-align: center;
     cursor: pointer;
-    color: ${cores.branco};
-    background-color: ${cores.principal};
-    border: solid ${cores.principal};
+    color: ${colors.white};
+    background-color: ${colors.main};
+    border: solid ${colors.main};
 `
 
 export const Container = styled.div`
     max-width: 1024px;
     width: 100%;
     margin: 0 auto;
+
+    @media (max-width: ${breakpoints.desktop}){
+        max-width: 80%;
+    }
+
+    @media (max-width: ${breakpoints.tablet}){
+        max-width: 90%;
+    }
+`
+export const Input = styled.input`
+    width: 100%;
+    border: none;
+    height: 32px;
+    margin-bottom: 8px;
+    padding: 8px;
 `
 
 

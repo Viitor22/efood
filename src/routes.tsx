@@ -3,7 +3,7 @@ import Home from "./Pages/Home";
 import Perfil from "./Pages/Perfil";
 
 
-const Rotas = () => (
+const AllRoutes = () => (
     <Routes>
         <Route path= '/' element= {<Home></Home>}></Route>
         <Route path= '/perfil/:id' element= {<Perfil></Perfil>}></Route>
@@ -11,4 +11,4 @@ const Rotas = () => (
         
 )
 
-export default Rotas
+export default AllRoutes

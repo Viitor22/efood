@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Title, cores } from "../../Styles";
+import { Title, breakpoints, colors } from "../../Styles";
 
 export const PresentationContainer = styled.div`
     height: 280px;
@@ -18,13 +18,19 @@ export const PresentationContainer = styled.div`
         left: 0;
         height: 100%;
         width: 100%;
-        background-color: ${cores.preto};
+        background-color: ${colors.black};
         content: '';
         opacity: 0.5;
     }
+
+    @media (max-width: ${breakpoints.tablet}){
+        h1,h3 {
+            font-size: 24px;
+        }
+    }
 `
 export const TitlePresentation = styled(Title)`
-    color: ${cores.branco};
+    color: ${colors.white};
     font-size: 32px;
     text-align: left;
     padding-top: 150px;
@@ -33,5 +39,5 @@ export const RestaurantName = styled.h3`
     font-size: 32px;
     font-weight: 100;
     text-align: left;
-    color: ${cores.branco};
+    color: ${colors.white};
 `

@@ -9,7 +9,7 @@ const HeaderPerfil = () => {
     const {items} = useSelector((state: RootReducer)=>(state.cart))
 
     const navigate = useNavigate();
-    const rotaHome = () => {
+    const routeHome = () => {
         navigate('/')
     }
 
@@ -20,7 +20,7 @@ const HeaderPerfil = () => {
 
     return (
         <HeaderContainer>
-            <HeaderTitle onClick={rotaHome}>Restaurantes</HeaderTitle>
+            <HeaderTitle onClick={routeHome}>Restaurantes</HeaderTitle>
             <Logo></Logo>
             <HeaderTitle onClick={openCart}>{items.length} - produto(s) no carrinho</HeaderTitle>
         </HeaderContainer>
