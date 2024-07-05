@@ -34,6 +34,10 @@ type PaymentPayload = {
     }
 }
 
+type PurchaseResponse = {
+    orderId: string
+}
+
 const api = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://fake-api-tau.vercel.app/api/efood/'
@@ -49,7 +53,7 @@ const api = createApi({
                 body
             })
         }),
-        payment: builder.mutation<any, PaymentPayload >({
+        payment: builder.mutation<PurchaseResponse, PaymentPayload >({
             query: (body) => ({
                 url: 'checkout',
                 method: 'POST',

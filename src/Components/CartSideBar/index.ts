@@ -31,6 +31,13 @@ export const Sidebar = styled.aside`
     z-index: 1;
     padding: 40px 16px 0 16px;
 
+    .empty-text{
+        font-size 14px;
+        line-height: 22px;
+        color: ${colors.white};
+        text-align: center;
+    }
+
     @media (max-width: ${breakpoints.tablet}){
         width: 230px;
     }

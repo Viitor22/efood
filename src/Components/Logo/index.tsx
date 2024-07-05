@@ -4,7 +4,9 @@ import logo from '../../assets/logo.png'
 const Logo = () => {
     return (
             <LogoDiv>
-                <img src={logo} alt="Efood Logo" />
+                <h1>
+                    <img src={logo} alt="Efood Logo" />
+                </h1>
             </LogoDiv>
     )
 }

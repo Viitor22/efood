@@ -64,9 +64,17 @@ const Delivery = () => {
 
     const getErrorMessage = (fieldName: string, message?: string) => {
         const isTouched = fieldName in form.touched
-        const isInvalid = fieldName in form.errors 
-        if (isInvalid && isTouched) return message
+        const isInvalid = fieldName in form.errors
+        const hasError = isInvalid && isTouched
+        if (hasError) return message
         else return ''
+    }
+
+    const inputHasErrorMessage = (fieldName: string) => {
+        const isTouched = fieldName in form.touched
+        const isInvalid = fieldName in form.errors
+        const hasError = isInvalid && isTouched
+        return hasError
     }
 
     return(
@@ -76,28 +84,28 @@ const Delivery = () => {
                 <form onSubmit={form.handleSubmit}>
                     <DeliveryTitle>Entrega</DeliveryTitle>
                     <label><DeliveryText>Quem irá receber</DeliveryText></label>
-                    <Input  onChange={form.handleChange} onBlur={form.handleBlur} id="name" type="text" name="name" value={form.values.name}/>
+                    <Input className={inputHasErrorMessage('name') ? 'error' : ''} onChange={form.handleChange} onBlur={form.handleBlur} id="name" type="text" name="name" value={form.values.name}/>
                     <small>{getErrorMessage('name', form.errors.name)}</small>
                     <label><DeliveryText>Endereço</DeliveryText></label>
-                    <Input  onChange={form.handleChange} onBlur={form.handleBlur} id="adress" type="text" name="adress" value={form.values.adress}/>
+                    <Input className={inputHasErrorMessage('adress') ? 'error' : ''} onChange={form.handleChange} onBlur={form.handleBlur} id="adress" type="text" name="adress" value={form.values.adress}/>
                     <small>{getErrorMessage('adress', form.errors.adress)}</small>
                     <label><DeliveryText>Cidade</DeliveryText></label>
-                    <Input  onChange={form.handleChange} onBlur={form.handleBlur} id="city" type="text" name="city" value={form.values.city}/>
+                    <Input className={inputHasErrorMessage('city') ? 'error' : ''} onChange={form.handleChange} onBlur={form.handleBlur} id="city" type="text" name="city" value={form.values.city}/>
                     <small>{getErrorMessage('city', form.errors.city)}</small>
                     <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "35px"}}>
                         <div>
                             <label><DeliveryText>CEP</DeliveryText></label>
-                            <Input  onChange={form.handleChange} onBlur={form.handleBlur} id="cep" type="text" name="cep" value={form.values.cep}/>
+                            <Input className={getErrorMessage('cep') ? 'error' : ''} onChange={form.handleChange} onBlur={form.handleBlur} id="cep" type="text" name="cep" value={form.values.cep}/>
                             <small>{getErrorMessage('cep', form.errors.cep)}</small>
                         </div>
                         <div>
                             <label><DeliveryText>Número</DeliveryText></label>
-                            <Input  onChange={form.handleChange} onBlur={form.handleBlur} id="adressNumber" type="text" name="adressNumber" value={form.values.adressNumber}/>
+                            <Input className={inputHasErrorMessage('adressNumber') ? 'error' : ''} onChange={form.handleChange} onBlur={form.handleBlur} id="adressNumber" type="text" name="adressNumber" value={form.values.adressNumber}/>
                             <small>{getErrorMessage('adressNumber', form.errors.adressNumber)}</small>
                         </div>
                     </div>
                     <label><DeliveryText>Complemento (opcional)</DeliveryText></label>
-                    <Input  onChange={form.handleChange} onBlur={form.handleBlur} style={{marginBottom: "24px"}} id="complement" type="text" name="complement" value={form.values.complement}/>
+                    <Input className={inputHasErrorMessage('complement') ? 'error' : ''} onChange={form.handleChange} onBlur={form.handleBlur} style={{marginBottom: "24px"}} id="complement" type="text" name="complement" value={form.values.complement}/>
                     <small>{getErrorMessage('complement', form.errors.complement)}</small>
                 <DeliveryButton type="submit" onClick={() => {OpenCheck(), closeDeliveryout()}}>Continar com o pagamento</DeliveryButton>
                 <DeliveryButton onClick={() => {closeDeliveryout(), openCart()}}>Voltar para o carrinho</DeliveryButton>

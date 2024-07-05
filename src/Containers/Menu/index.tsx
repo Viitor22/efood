@@ -18,7 +18,7 @@ const Menu = ({restaurants}:Props) => {
                 return (
                     <>
                     <ListContainer>
-                        {restaurants[i].menu.map((menuItem) => (
+                        {restaurants[i].menu?.map((menuItem) => (
                             <CardPerfil key={menuItem.id} image={menuItem.photo}
                             name={menuItem.name}
                             description={menuItem.description}

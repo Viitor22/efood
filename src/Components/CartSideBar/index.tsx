@@ -47,26 +47,34 @@ const CartSideBar = () => {
         <CartContainer className={isOpen ? 'is-open' : ''}>
             <Overlay onClick={closeCart}></Overlay>
             <Sidebar>
-                <ul>
-                    {items.map((item) => (
-                    <Order key={item.id}>
-                        <div className="flex">
-                            <img className="profile" src={item.photo} alt="" />
-                            <div className="text-content">
-                                <CartTitle>{item.name}</CartTitle>
-                                <Text>{formatPrice(item.price)}</Text>
+                {items.length > 0 ? 
+                (
+                    <>
+                        <ul>
+                        {items.map((item) => (
+                        <Order key={item.id}>
+                            <div className="flex">
+                                <img className="profile" src={item.photo} alt="" />
+                                <div className="text-content">
+                                    <CartTitle>{item.name}</CartTitle>
+                                    <Text>{formatPrice(item.price)}</Text>
+                                </div>
+                                <Icon onClick={() => removeItem(item.id)} className="icon" src={icon}/>
                             </div>
-                            <Icon onClick={() => removeItem(item.id)} className="icon" src={icon}/>
-                        </div>
-                    </Order>
-                    ))}
-                    
-                </ul>
-                <Total>
-                    <Text>Valor total </Text>
-                    <Text>{formatPrice(getTotalPrice())}</Text>
-                </Total>
-                <CartButton onClick={() => {OpenDelivery(); closeCart(); getTotal(formatPrice(getTotalPrice())) }}>Continar com a entrega</CartButton>
+                        </Order>
+                        ))}
+                        </ul>
+                        <Total>
+                            <Text>Valor total </Text>
+                            <Text>{formatPrice(getTotalPrice())}</Text>
+                        </Total>
+                        <CartButton onClick={() => {if (items.length === 0) {closeCart()}else{OpenDelivery(); closeCart(); getTotal(formatPrice(getTotalPrice()))} }}>Continar com a entrega</CartButton>
+                    </>
+                ) : (
+                    <>
+                    <p className="empty-text">O carrinho está vazio, adicione produtos para continuar com a compra.</p>
+                    </>
+                )}
             </Sidebar>
         </CartContainer>
     )

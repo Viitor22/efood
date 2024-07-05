@@ -1,14 +1,19 @@
+import { useGetRestaurantQuery } from "../../services/api.ts"
 import Menu from "../../Containers/Menu/index.tsx"
 import Footer from "../../Containers/Footer/index.tsx"
 import HeaderPerfil from "../../Containers/HeaderPerfil/index.tsx"
 import Presentation from "../../Containers/Presentation/index.tsx"
-import { useGetRestaurantQuery } from "../../services/api.ts"
+import Loader from "../../Components/Loader/index.tsx"
 
 const Perfil = () => {
-    const {data: restaurants} = useGetRestaurantQuery()
+    const {data: restaurants, isLoading} = useGetRestaurantQuery()
 
     if(!restaurants){
         return
+    }
+
+    if(isLoading){
+        <Loader></Loader>
     }
 
     return (

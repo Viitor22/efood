@@ -5,14 +5,16 @@ import { useDispatch, useSelector } from "react-redux"
 
 import { closeCheck } from "../../store/reducer/checkout.ts"
 import { openDelivery } from "../../store/reducer/delivery.ts"
+import { clear } from "../../store/reducer/cart.ts"
 import { usePaymentMutation } from "../../services/api.ts"
 import { CartButton, CheckContainer, Overlay, Sidebar, CheckTitle, CheckText } from "./index.ts"
 import { Input } from "../../Styles/index.ts"
+import { useEffect } from "react"
 
 const Checkout = () => {
     const {checkIsOpen } = useSelector((state: RootReducer) => state.checkout)
     const {total } = useSelector((state: RootReducer) => state.checkout)
-    const [payment, {isSuccess, data}] = usePaymentMutation()
+    const [payment, {data, isSuccess }] = usePaymentMutation()
 
     const form = useFormik({
         initialValues: {
@@ -53,11 +55,29 @@ const Checkout = () => {
         dispatch(openDelivery())
     }
 
+    useEffect(() => {
+        if (isSuccess) {
+            dispatch(clear())
+        }
+    }, [isSuccess, dispatch])
+
     const getErrorMessage = (fieldName: string, message?: string) => {
         const isTouched = fieldName in form.touched
-        const isInvalid = fieldName in form.errors 
-        if (isInvalid && isTouched) return message
+        const isInvalid = fieldName in form.errors
+        const hasError = isInvalid && isTouched
+        if (hasError) return message
         else return ''
+    }
+
+    const inputHasErrorMessage = (fieldName: string) => {
+        const isTouched = fieldName in form.touched
+        const isInvalid = fieldName in form.errors
+        const hasError = isInvalid && isTouched
+        return hasError
+    }
+
+    if(!data){
+        return
     }
 
     return(
@@ -69,23 +89,23 @@ const Checkout = () => {
                 <form onSubmit={form.handleSubmit}>
                     <CheckTitle>Pagamento - Valor a pagar {total}</CheckTitle>
                         <label><CheckText>Nome no cartão</CheckText></label>
-                        <Input id="cardName" type="text" name="cardName" value={form.values.cardName} onChange={form.handleChange} onBlur={form.handleBlur}/>
+                        <Input className={inputHasErrorMessage('cardName') ? 'error' : ''}id="cardName" type="text" name="cardName" value={form.values.cardName} onChange={form.handleChange} onBlur={form.handleBlur}/>
                         <small>{getErrorMessage('cardName', form.errors.cardName)}</small>
                         <label><CheckText>Número do cartão</CheckText></label>
-                        <Input onChange={form.handleChange} onBlur={form.handleBlur} id="cardNumber" type="text" name="cardNumber" value={form.values.cardNumber}/>
+                        <Input className={inputHasErrorMessage('cardNumber') ? 'error' : ''}onChange={form.handleChange} onBlur={form.handleBlur} id="cardNumber" type="text" name="cardNumber" value={form.values.cardNumber}/>
                         <small>{getErrorMessage('cardNumber', form.errors.cardNumber)}</small>
                         <label><CheckText>CVV</CheckText></label>
-                        <Input onChange={form.handleChange} onBlur={form.handleBlur} id="cardCode" type="text" name="cardCode" value={form.values.cardCode}/>
+                        <Input className={inputHasErrorMessage('cardCode') ? 'error' : ''}onChange={form.handleChange} onBlur={form.handleBlur} id="cardCode" type="text" name="cardCode" value={form.values.cardCode}/>
                         <small>{getErrorMessage('cardCode', form.errors.cardCode)}</small>
                         <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "35px", marginBottom: "16px"}}>
                             <div>
                                 <label><CheckText>Mês de vencimento</CheckText></label>
-                                <Input onChange={form.handleChange} onBlur={form.handleBlur} id="expiresMonth" type="text" name="expiresMonth" value={form.values.expiresMonth}/>
+                                <Input className={inputHasErrorMessage('expiresMonth') ? 'error' : ''}onChange={form.handleChange} onBlur={form.handleBlur} id="expiresMonth" type="text" name="expiresMonth" value={form.values.expiresMonth}/>
                                 <small>{getErrorMessage('expiresMonth', form.errors.expiresMonth)}</small>
                             </div>
                             <div>
                                 <label><CheckText>Ano de vencimento</CheckText></label>
-                                <Input onChange={form.handleChange} onBlur={form.handleBlur} id="expiresYear" type="text" name="expiresYear" value={form.values.expiresYear}/>
+                                <Input className={inputHasErrorMessage('expiresYear') ? 'error' : ''}onChange={form.handleChange} onBlur={form.handleBlur} id="expiresYear" type="text" name="expiresYear" value={form.values.expiresYear}/>
                                 <small>{getErrorMessage('expiresYear', form.errors.expiresYear)}</small>
                             </div>
                         </div>
@@ -95,7 +115,7 @@ const Checkout = () => {
                 ) : (
                 <>
                 <div>
-                    <CheckTitle>Pedido realizado - {data.ORDER_ID}</CheckTitle>
+                    <CheckTitle>Pedido realizado - {data.orderId}</CheckTitle>
                     <CheckText>Estamos felizes em informar que seu Pedido já está em processo de preparação e, em breve, será entregue no endereço fornecido.</CheckText>
                     <CheckText>Gostaríamos de ressaltar que nossos entregadores não estão autorizados a realizar cobranças extras. </CheckText>
                     <CheckText>Lembre-se da importância de higienizar as mãos após o recebimento do Pedido, garantindo assim sua segurança e bem-estar durante a refeição. </CheckText>

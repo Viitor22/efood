@@ -7,4 +7,8 @@ export const LogoDiv = styled.div`
     padding-left: 50%;
     padding-right: 50%;
     margin-bottom: 30px;
+
+    h1 {
+        line-height: 0;
+    }
 `

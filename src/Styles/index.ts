@@ -75,6 +75,10 @@ export const Input = styled.input`
     height: 32px;
     margin-bottom: 8px;
     padding: 8px;
+
+    &.error{
+        border: 1px solid red;
+    }
 `
 
 
