@@ -18,13 +18,13 @@ const Menu = ({restaurants}:Props) => {
                 return (
                     <>
                     <ListContainer>
-                        {restaurants[i].menu?.map((menuItem) => (
-                            <CardPerfil key={menuItem.id} image={menuItem.photo}
-                            name={menuItem.name}
-                            description={menuItem.description}
-                            modalDescription={menuItem.description}
-                            portion={menuItem.portion}
-                            price={menuItem.price}>
+                        {restaurants[i].cardapio?.map((menuItem) => (
+                            <CardPerfil key={menuItem.id} image={menuItem.foto}
+                            name={menuItem.nome}
+                            description={menuItem.descricao}
+                            modalDescription={menuItem.descricao}
+                            portion={menuItem.porcao}
+                            price={menuItem.preco}>
                             </CardPerfil>
                         ))}
                     </ListContainer>

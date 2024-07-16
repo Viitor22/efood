@@ -6,7 +6,6 @@ import AllRoutes from './routes'
 
 import GlobalCss, { Container } from './Styles'
 import CartSideBar from './Components/CartSideBar/index.tsx'
-import Checkout from './Components/Checkout/index.tsx'
 import Delivery from './Components/Delivery/index.tsx'
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
         </Container>
         <CartSideBar></CartSideBar>
         <Delivery></Delivery>
-        <Checkout></Checkout>
       </BrowserRouter>
     </Provider>
   )

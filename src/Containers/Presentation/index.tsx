@@ -13,13 +13,13 @@ const Presentation = ({restaurants}:Props) => {
             break
         } else{
             if (restaurants[i].id == id) {
-                const {banner, type, title} = restaurants[i]
+                const {capa, tipo, titulo} = restaurants[i]
                 return (
                     <>
-                    <PresentationContainer style={{backgroundImage: `url(${banner})`}}>
+                    <PresentationContainer style={{backgroundImage: `url(${capa})`}}>
                     <div className='content'>
-                        <RestaurantName>{type}</RestaurantName>
-                        <TitlePresentation>{title}</TitlePresentation>
+                        <RestaurantName>{tipo}</RestaurantName>
+                        <TitlePresentation>{titulo}</TitlePresentation>
                     </div>
                     </PresentationContainer>
                     </>

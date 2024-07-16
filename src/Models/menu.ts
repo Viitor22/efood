@@ -1,8 +1,8 @@
 export type MenuModel = {
-    photo: string
-    price: number
+    foto: string
+    preco: number
     id: number
-    name: string
-    description: string
-    portion: string
+    nome: string
+    descricao: string
+    porcao: string
 }

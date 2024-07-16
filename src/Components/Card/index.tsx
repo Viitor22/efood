@@ -12,7 +12,7 @@ type Props = {
 }
 
 const Card = ({restaurants}:Props) => {
-    const {grade, banner, description, highlighted, id, type, title} = restaurants
+    const { titulo, destacado, tipo, avaliacao, descricao, capa, id} = restaurants
     const navigate = useNavigate();
 
     const routePerfil = () => {
@@ -22,17 +22,17 @@ const Card = ({restaurants}:Props) => {
     return (
             <CardDiv>
                 <CardTags>
-                    {highlighted ? (<Button>Destaque da semana</Button>) : ( <></>)}
+                    {destacado ? (<Button>Destaque da semana</Button>) : ( <></>)}
                     
-                    <Button>{type}</Button>
+                    <Button>{tipo}</Button>
                 </CardTags>
-                <img src={banner}/>
+                <img src={capa}/>
                 <div className='card-content'>
                     <CardTitle>
-                    <SubTitle>{title}</SubTitle>
-                    <SubTitle className='card-grade'>{grade}<img src={star} alt="Estrela" /></SubTitle>
+                    <SubTitle>{titulo}</SubTitle>
+                    <SubTitle className='card-grade'>{avaliacao}<img src={star} alt="Estrela" /></SubTitle>
                     </CardTitle>
-                    <Text className='card-text'>{description}</Text>
+                    <Text className='card-text'>{descricao}</Text>
                     <Button onClick={routePerfil}>Saiba Mais</Button>
                 </div>
             </CardDiv>
