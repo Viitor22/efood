@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { breakpoints, Button, colors } from '../../Styles'
 
 type Props = {
-    maxWidht?: string
-    isVisible?: boolean
+    maxwidth?: string
+    isvisible?: boolean
 }
 
 export const Overlay = styled.div`
@@ -34,7 +34,7 @@ export const SideBar = styled.aside<Props>`
   width: 360px;
   padding: 32px 8px 0 8px;
   z-index: 1;
-  display: ${(props) => (props.isVisible ? 'block' : 'none')};
+  display: ${(props) => (props.isvisible ? 'block' : 'none')};
 
   ul {
     display: flex;
@@ -55,6 +55,10 @@ export const SideBar = styled.aside<Props>`
     color: ${colors.white};
     text-align: center;
     font-weight: bold;
+  }
+
+  @media (max-width: ${breakpoints.tablet}){
+    width: 230px;
   }
 `
 
@@ -142,7 +146,7 @@ export const Title = styled.h2`
   margin-bottom: 16px;
 `
 export const InputGroup = styled.div<Props>`
-  max-width: ${(props) => props.maxWidht || 'auto'};
+  max-width: ${(props) => props.maxwidth || 'auto'};
   flex: auto;
 
   label {

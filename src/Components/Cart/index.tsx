@@ -33,13 +33,13 @@ const Cart = () => {
     const [checkout, setCheckout] = useState(false)
     const navigate = useNavigate()
 
-    //function responsible for redirecting to the delivery form
+
     const goToDelivery = () => {
         setCart(false)
         setPaymentData(false)
         setDeliveryData(true)
     }
-    //function responsible for redirecting to the purchase form
+
     const goToPayment = () => {
         if (
             !form.errors.fullName &&
@@ -52,14 +52,14 @@ const Cart = () => {
             setDeliveryData(false)
         }
     }
-    //function responsible for redirecting to the delivery form
+
     const backToCart = () => {
         setCart(true)
         setPaymentData(false)
         setDeliveryData(false)
         setCheckout(false)
     }
-    //responsible function return to the initial state of the cart
+
     const goToCheckout = () => {
         if (
             !form.errors.cardOwner &&
@@ -142,14 +142,14 @@ const Cart = () => {
             })
         }
     })
-    // function to complete the purchase
+
     const sucessPayment = () => {
         dispatch(close())
         dispatch(clear())
         backToCart()
         navigate('/')
     }
-    //function that checks the fields for errors
+
     const hasError = (fieldName: string) => {
         const isTouched = fieldName in form.touched
         const isInvalid = fieldName in form.errors
@@ -168,7 +168,7 @@ const Cart = () => {
     return (
         <S.CartContainer className={isOpen ? 'is-open' : ''}>
             <S.Overlay onClick={() => dispatch(close())} />
-            <S.SideBar isVisible={cart}>
+            <S.SideBar isvisible={cart}>
                 {items.length < 1 ? (
                     <p className="emptyCart">
                         O carrinho está vazio, adicione produtos para continuar com a compra.
@@ -198,7 +198,7 @@ const Cart = () => {
                     </>
                 )}
             </S.SideBar>
-            <S.SideBar isVisible={deliveryData}>
+            <S.SideBar isvisible={deliveryData}>
                 <S.Form onSubmit={form.handleSubmit}>
                     <S.Title>Entrega</S.Title>
                     <S.InputGroup>
@@ -284,7 +284,7 @@ const Cart = () => {
                     </S.CartButton>
                 </S.Form>
             </S.SideBar>
-            <S.SideBar isVisible={paymentData}>
+            <S.SideBar isvisible={paymentData}>
                 <S.Form onSubmit={form.handleSubmit}>
                     <S.Title>
                         Pagamento - Valor a pagar {formatPrice(getTotalPrice())}
@@ -315,7 +315,7 @@ const Cart = () => {
                             />
                             <small>{getErrorMessage('cardNumber', form.errors.cardNumber)}</small>
                         </S.InputGroup>
-                        <S.InputGroup maxWidht="86px">
+                        <S.InputGroup maxwidth="86px">
                             <label htmlFor="cardCode">CVV</label>
                             <InputMask
                                 mask="999"
@@ -366,7 +366,7 @@ const Cart = () => {
                 </S.Form>
             </S.SideBar>
             {isSuccess && data ? (
-                <S.SideBar isVisible={checkout}>
+                <S.SideBar isvisible={checkout}>
                     <S.Title>Pedido realizado - {data.orderId} </S.Title>
                     <S.MessageContainer>
                         <p>
@@ -392,7 +392,7 @@ const Cart = () => {
                     </S.MessageContainer>
                 </S.SideBar>
             ) : (
-                <S.SideBar isVisible={checkout}>
+                <S.SideBar isvisible={checkout}>
                     <S.Title> Erro na transação</S.Title>
                     <p>Verifique os dados do cartão</p>
                     <S.CartButton className="" type="button" onClick={backToCart}>
