@@ -239,7 +239,7 @@ const Cart = () => {
                     </S.InputGroup>
                     <S.InputGrouping>
                         <S.InputGroup>
-                            <label htmlFor="zipCode">zipCode</label>
+                            <label htmlFor="zipCode">CEP</label>
                             <InputMask
                                 mask="99999-999"
                                 id="zipCode"
@@ -252,7 +252,7 @@ const Cart = () => {
                             <small>{getErrorMessage('zipCode', form.errors.zipCode)}</small>
                         </S.InputGroup>
                         <S.InputGroup>
-                            <label htmlFor="number">Numero</label>
+                            <label htmlFor="number">Número</label>
                             <input
                                 id="number"
                                 type="text"
