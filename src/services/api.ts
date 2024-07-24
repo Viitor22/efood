@@ -8,7 +8,7 @@ type DeliveryPayload = {
     }
     delivery: {
         receiver: string
-        adress: {
+        address: {
             description: string
             city: string
             zipCode: string

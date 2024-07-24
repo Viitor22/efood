@@ -5,8 +5,9 @@ import { store } from './store'
 import AllRoutes from './routes'
 
 import GlobalCss, { Container } from './Styles'
-import CartSideBar from './Components/CartSideBar/index.tsx'
-import Delivery from './Components/Delivery/index.tsx'
+//import CartSideBar from './Components/CartSideBar/index.tsx'
+//import Delivery from './Components/Delivery/index.tsx'
+import Cart from './Components/Cart/index.tsx'
 
 function App() {
 
@@ -17,8 +18,7 @@ function App() {
         <Container>
           <AllRoutes></AllRoutes>
         </Container>
-        <CartSideBar></CartSideBar>
-        <Delivery></Delivery>
+        <Cart></Cart>
       </BrowserRouter>
     </Provider>
   )
