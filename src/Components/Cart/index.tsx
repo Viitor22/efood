@@ -46,7 +46,8 @@ const Cart = () => {
             !form.errors.address &&
             !form.errors.city &&
             !form.errors.zipCode &&
-            !form.errors.number
+            !form.errors.number &&
+            form.dirty
         ) {
             setPaymentData(true)
             setDeliveryData(false)
@@ -66,7 +67,8 @@ const Cart = () => {
             !form.errors.cardNumber &&
             !form.errors.cardCode &&
             !form.errors.expiresMonth &&
-            !form.errors.expiresYear
+            !form.errors.expiresYear &&
+            form.dirty
         ) {
             setPaymentData(false)
             setCheckout(true)
